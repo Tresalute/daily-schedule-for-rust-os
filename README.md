@@ -30,3 +30,16 @@
 1. 遵循着文档敲一遍os1,毕竟实践才是硬道理
 2. 学习下RISC-V相关内容，这块没撒经验，估计着要头大
 3. 复习下rust,写一些小demo之类的
+
+## Day 2 2022/7/2
+虽然预料到会完成不了任务，但没想到这么惨
+
+今天的学习情况
+1. 在本地搭建了下学习环境，codespace还是有很多不知之处啊。
+2. 照着文档敲了一遍os1,中途磕磕碰碰的，填了很多坑，但还是有很多不懂的地方
+
+明天
+1. 继续剖析os1的代码
+2. 看看RISC-V ([OpenSBI](https://github.com/riscv-non-isa/riscv-sbi-doc/blob/master/riscv-sbi.adoc#legacy-sbi-extension-extension-ids-0x00-through-0x0f))
+
+睡了睡了，明天不出去浪了，专心学习
