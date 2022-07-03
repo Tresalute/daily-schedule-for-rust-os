@@ -21,6 +21,7 @@ impl Log for SimpleLogger{
             log::Level::Trace => 90,
         };
         println!(
+            // 控制台颜色控制
             "\u{1B}[{}m[{:>5}] {}\u{1B}[0m",
             color,
             record.level(),
@@ -38,6 +39,7 @@ impl Log for SimpleLogger{
 pub fn init(){
     static LOGGER: SimpleLogger = SimpleLogger;
     log::set_logger(&LOGGER).unwrap();
+    // options_env 可以获取环境变量中的值，然后通过运行是设定临时的环境变量来达到控制日志输出级别
     log::set_max_level(match option_env!("LOG") {
         Some("ERROR") => log::LevelFilter::Error,
         Some("WARN") => log::LevelFilter::Warn,
