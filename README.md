@@ -43,3 +43,22 @@
 2. 看看RISC-V ([OpenSBI](https://github.com/riscv-non-isa/riscv-sbi-doc/blob/master/riscv-sbi.adoc#legacy-sbi-extension-extension-ids-0x00-through-0x0f))
 
 睡了睡了，明天不出去浪了，专心学习
+
+## Day 3 2022/7/3
+头大头大，太多知识盲点，英文还差，肯RISC-V的文档真的太痛苦了
+
+今天
+1. 完善了os1的相关注释，知识点一个个敲出来，但还是感觉很朦胧
+2. 啃了下RISC-V的文档，英文硬伤，不过多多少少了解一点了，后续当字典查吧
+3. 了解了RUST中内联汇编相关的知识，顺带拓展了RISC-V的汇编
+
+
+明天
+1. 继续了解下RISV-V的相关知识，可以的话用其写写demo
+2. rsut相关demo也得补充下，算法之类的
+
+*时间全靠上班摸鱼来，到了考验我的摸鱼技术*
+
+
+
+
