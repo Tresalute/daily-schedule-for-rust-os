@@ -66,9 +66,75 @@
 
 关于Rust所有权的问题
 在类中自调用该类自己的方法时，提示所有权问题，说借用重复
-当时卡在这儿半天，后面分析，原因是调用的两个函数内都对同一个对象进行了操作,具体记不清了，明天去公司补充吧
+当时卡在这儿半天，后面分析，原因是函数闭包中重复应用了参数操作,具体记不清了，明天去公司补充吧
 
 还有说准备用汇编写demo的，没写出来，看了一小会，头大，明天看看怎么学这玩意(ノへ￣、)
 
+---
+更新下遇到的代码
+```rust
+
+use std::collections::HashMap;
+
+struct Example{
+            sp_map:HashMap<u8, u8>,
+            bp_map:HashMap<u8, String>,
+        }
+
+        impl Example{
+            pub fn get_dp_map(&mut self, _key: &u8) {
+                todo!()
+            }
+
+            pub fn get_sp_data(&mut self, key: &u8){
+                match self.sp_map.get(key) {
+                    Some(v) => {
+                        self.get_dp_map(v);
+                    },
+                    None => {},
+                }
+            }
+        }
+/// 报错
+/// cannot borrow `*self` as mutable because it is also borrowed as immutable
+/// mutable borrow occurs hererustcE0502
+/// example.rs(286, 23): immutable borrow occurs here
+/// example.rs(288, 30): immutable borrow later used by call
+
+
+```
+解释下在闭包中变量`v`被二次使用就不行了，如果通过clone能避开这个问题，但治标不治本(#｀-_ゝ-)
+
+---
+刚又研究了下，其实错误提示已经给出来了...
+在闭包中，`self`的权限是借用还是引用由上层调用者决定，这里是`self.sp_map.get()`
+它返回的是一个值的引用，所以这里`self`的权限是借用，而在闭包中的调用`get_dp_map`中对`self`进行了借用
+导致了这个问题
+
+---
+修改后的代码
+```rust
+use std::collections::HashMap;
+
+struct Example{
+            sp_map:HashMap<u8, u8>,
+            bp_map:HashMap<u8, String>,
+        }
+
+        impl Example{
+            pub fn get_dp_map(& self, _key: &u8) {
+                todo!()
+            }
+
+            pub fn get_sp_data(&mut self, key: &u8){
+                match self.sp_map.get(key) {
+                    Some(v) => {
+                        self.get_dp_map(v);
+                    },
+                    None => {},
+                }
+            }
+        }
+```
 
 
