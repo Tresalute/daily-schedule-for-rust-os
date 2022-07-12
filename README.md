@@ -194,4 +194,11 @@ struct Example{
 
 还有一些RUST的指针没解决，觉得挺重要的，了解下
 
+## Day 12 2022/7/12
+
+主要测试了几个智能指针，Box、Rc、Arc、Cell、RefCell
+添加了一些demo
+
+明天看os3
+
 
